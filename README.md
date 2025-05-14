@@ -13,18 +13,8 @@ These lines of additions and deletions can be configured to ignore test files an
 
 ## Run the app
 
-# Run the react application
 ```bash
-cd src/renderer
-npm install
-npm start
-```
-
-# Run the electron application
-```bash
-cd ../..
-npm install
-npm start:electron
+npm run dev
 ```
 
 ---------------------

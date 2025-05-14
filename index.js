@@ -29,7 +29,7 @@ function createWindow() {
   setMainWindow(mainWindow);
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:3000');
+    mainWindow.loadURL('http://localhost:3300');
   } else {
     mainWindow.loadFile(path.join(__dirname, 'src', 'renderer', 'build', 'index.html'));
   }

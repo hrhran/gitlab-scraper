@@ -292,17 +292,20 @@ function aggregateMRs(mrs) {
   
   mrs.forEach(mr => {
     logToRenderer(`Aggregating: ${mr.title}`);
-    const additions = mr.diffStatsSummary.additions;
-    const deletions = mr.diffStatsSummary.deletions;
     let assignees = mr.assignees && mr.assignees.nodes;
     if (!assignees || assignees.length === 0) {
       assignees = [{ name: 'Unassigned', avatarUrl: '' }];
     }
-  
+
+    const additions = Math.floor(mr.diffStatsSummary.additions / assignees.length);
+    const deletions = Math.floor(mr.diffStatsSummary.deletions / assignees.length);
+
+    logToRenderer('additions:' + additions + 'deletions:' + deletions);
+    logToRenderer('deletions: ' + deletions);
+    logToRenderer('assignees: ' + assignees?.length);  
     assignees.forEach(a => {
       totalAdd += additions;
       totalDel += deletions;
-  
       if (!repoStats[a.name]) {
         repoStats[a.name] = { additions: 0, deletions: 0, avatarUrl: a.avatarUrl };
       }
